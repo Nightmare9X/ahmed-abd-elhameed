@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grading system</title>
+</head>
+<body>
+    <script>
+        let studentName = prompt("Enter the student's name:");
+let subjectCount = parseInt(prompt("Enter the number of subjects:"));
+
+while (isNaN(subjectCount) || subjectCount <= 0) {
+    subjectCount = parseInt(prompt("Invalid number. Enter the number of subjects again:"));
+}
+
+let totalScore = 0;
+let subjects = [];
+
+for (let i = 1; i <= subjectCount; i++) {
+    let subjectName = prompt(`Enter name of subject ${i}:`);
+    let grade = parseFloat(prompt(`Enter grade for ${subjectName}:`));
+
+    while (isNaN(grade) || grade < 0 || grade > 100) {
+        grade = parseFloat(prompt(`Invalid grade. Enter grade for ${subjectName} again:`));
+    }
+
+    subjects.push({ name: subjectName, grade: grade });
+    totalScore += grade;
+}
+
+let average = totalScore / subjectCount;
+let status = average >= 50 ? "Congratulations! You passed 🎉 . ur good man" : "Sorry, you failed ❌.u suck ,noob";
+
+let summary = `Student Name: ${studentName}
+Number of Subjects: ${subjectCount}
+Total Score: ${totalScore}
+Average Score: ${average.toFixed(2)}
+Result: ${status}`;
+
+alert(summary);
+    </script>
+    
+</body>
+</html>
